@@ -3,22 +3,22 @@ package mschreiber2740Ex3h;
 public class Rainfall {
 	
 	private double [] rainfall;
-	private String [] strRainfall;
+	
 	
 	
 			
 	//constructor for double array
-	public Rainfall(double [] rainfall) {
-		this.rainfall = new double [rainfall.length];
-		for (int i = 0; i < rainfall.length; i++)
-			rainfall[i] = rainfall [i];
+	public Rainfall(double [] dr) {
+		this.rainfall = new double [dr.length];
+		for (int i = 0; i < dr.length; i++)
+			this.rainfall[i] = dr [i];
 	}
 
 	//constructor for string array
-	public Rainfall(String [] strRainfall) {
-		this.strRainfall = new String [strRainfall.length];
-		for (int i = 0; i < strRainfall.length; i++)
-			strRainfall[i] =(strRainfall[i]);
+	public Rainfall(String [] strDr) {
+		this.rainfall = new double [strDr.length];
+		for (int i = 0; i < strDr.length; i++)
+			this.rainfall[i] = Double.parseDouble(strDr[i]);
 	}
 	
 	//calculates the total of all array items
@@ -38,7 +38,7 @@ public class Rainfall {
 	}
 	
 	//get the highest value in the array
-	//FINISH METHODS STARTING HERE.... STILL DONT UNDERSTAND THE CONSTRUCTORS YET
+	//FINISH METHODS STARTING 
 	public double getHighest()
 	{
 		double highest = 0.0;
