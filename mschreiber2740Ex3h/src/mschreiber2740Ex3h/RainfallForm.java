@@ -180,12 +180,30 @@ public class RainfallForm extends JFrame {
 		btnCalculate.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnCalculate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Rainfall rainfall = new Rainfall(strRainfall);
 				
+				//creates Rainfall object using strRainfall array
+				Rainfall rainfall = new Rainfall(strRainfall);
 				DecimalFormat fmt = new DecimalFormat("0.0");
+				//sets the total label value on the form
 				lblTotalLabel.setText(fmt.format(rainfall.getTotal()));
 				
-				//ADD AVG MIN MAX HERE
+				//sets the average value on the form
+				rainfall = new Rainfall(strRainfall);
+				DecimalFormat fmt1 = new DecimalFormat("0.0");
+				//sets the total label value on the form
+				lblAvg.setText(fmt1.format(rainfall.getAverage()));
+				
+				//sets the min value on the form
+				rainfall = new Rainfall(strRainfall);
+				DecimalFormat fmt2 = new DecimalFormat("0.0");
+				//sets the total label value on the form
+				lblMin.setText(fmt2.format(rainfall.getLowest()));
+				
+				//sets the max value on the form
+				rainfall = new Rainfall(strRainfall);
+				DecimalFormat fmt3 = new DecimalFormat("0.0");
+				//sets the total label value on the form
+				lblMax.setText(fmt3.format(rainfall.getHighest()));
 				
 				
 			}
