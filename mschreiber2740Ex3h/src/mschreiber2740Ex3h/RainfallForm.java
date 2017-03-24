@@ -14,11 +14,15 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+
 import java.awt.Font;
+import java.text.DecimalFormat;
 
 public class RainfallForm extends JFrame {
 
@@ -26,6 +30,10 @@ public class RainfallForm extends JFrame {
 	private JList rainfallList;
 	private JLabel lblTotalLabel;
 	private JTextField inputMonthTextField;
+	private String [] strRainfall = {
+			 "1.2", "2.7", "2.2", "3.1", "2.9", "5.1",
+			 "3.2", "2.7", "3.6", "1.8","2.2", "1.7"};
+	private JButton btnUpdate;
 
 	/**
 	 * Launch the application.
@@ -74,15 +82,20 @@ public class RainfallForm extends JFrame {
 		monthList.setBounds(20, 39, 72, 200);
 		contentPane.add(monthList);
 		
-		rainfallList = new JList();
+		rainfallList = new JList(strRainfall);
 		rainfallList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
-				//NEED CODE HERE
+
+				btnUpdate.setEnabled(true);
+				inputMonthTextField.setText((String) rainfallList.getSelectedValue());
+				inputMonthTextField.requestFocus();
+				inputMonthTextField.selectAll();
+				
 				
 			}
 		});		
 		rainfallList.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		rainfallList.setBounds(77, 39, 72, 200);
+		rainfallList.setBounds(91, 36, 36, 200);
 		contentPane.add(rainfallList);
 		
 		JLabel lblTotal = new JLabel("Total: ");
@@ -138,14 +151,23 @@ public class RainfallForm extends JFrame {
 		contentPane.add(inputMonthTextField);
 		inputMonthTextField.setColumns(10);
 		
-		JButton btnUpdate = new JButton("Update");
+		btnUpdate = new JButton("Update");
+		btnUpdate.setEnabled(false);
 		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//NEED CODE HERE
+				int selectedIndex = rainfallList.getSelectedIndex();
+				double r = Double.parseDouble(inputMonthTextField.getText());
+				strRainfall[selectedIndex] = Double.toString(r);
+				rainfallList.repaint();
 				
-				
+				inputMonthTextField.setText("0.0");
+				btnUpdate.setEnabled(false);
+				lblTotalLabel.setText("");
+				lblAvg.setText("");
+				lblMin.setText("");
+				lblMax.setText("");		
 				
 			}
 		});		
@@ -158,14 +180,17 @@ public class RainfallForm extends JFrame {
 		btnCalculate.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnCalculate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Rainfall rainfall = new Rainfall(strRainfall);
 				
-				//NEED CODE HERE
+				DecimalFormat fmt = new DecimalFormat("0.0");
+				lblTotalLabel.setText(fmt.format(rainfall.getTotal()));
 				
+				//ADD AVG MIN MAX HERE
 				
 				
 			}
 		});		
-		btnCalculate.setBounds(203, 203, 89, 23);
+		btnCalculate.setBounds(202, 281, 89, 23);
 		contentPane.add(btnCalculate);
 	}
 }

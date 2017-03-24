@@ -22,6 +22,7 @@ public class Rainfall {
 	}
 	
 	//calculates the total of all array items
+	//TOTAL IS NOT ACCURATE NEED TO SEE WHY
 	public double getTotal()
 	{
 		double total = 0.0;
