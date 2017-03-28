@@ -57,7 +57,7 @@ public class RainfallForm extends JFrame {
 	public RainfallForm() {
 		setTitle("MSchreiber 2740 Ex3H Rainfall");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 378, 361);
+		setBounds(100, 100, 341, 335);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -79,7 +79,7 @@ public class RainfallForm extends JFrame {
 				return values[index];
 			}
 		});
-		monthList.setBounds(20, 39, 72, 200);
+		monthList.setBounds(20, 39, 72, 218);
 		contentPane.add(monthList);
 		
 		rainfallList = new JList(strRainfall);
@@ -95,7 +95,7 @@ public class RainfallForm extends JFrame {
 			}
 		});		
 		rainfallList.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		rainfallList.setBounds(91, 36, 36, 200);
+		rainfallList.setBounds(91, 36, 36, 221);
 		contentPane.add(rainfallList);
 		
 		JLabel lblTotal = new JLabel("Total: ");
@@ -147,7 +147,7 @@ public class RainfallForm extends JFrame {
 		contentPane.add(lblMin);
 		
 		inputMonthTextField = new JTextField();
-		inputMonthTextField.setBounds(92, 250, 57, 20);
+		inputMonthTextField.setBounds(21, 270, 57, 20);
 		contentPane.add(inputMonthTextField);
 		inputMonthTextField.setColumns(10);
 		
@@ -171,7 +171,7 @@ public class RainfallForm extends JFrame {
 				
 			}
 		});		
-		btnUpdate.setBounds(77, 281, 89, 23);
+		btnUpdate.setBounds(88, 269, 89, 23);
 		contentPane.add(btnUpdate);
 		
 		
@@ -183,32 +183,32 @@ public class RainfallForm extends JFrame {
 				
 				//creates Rainfall object using strRainfall array
 				Rainfall rainfall = new Rainfall(strRainfall);
-				DecimalFormat fmt = new DecimalFormat("0.0");
+				DecimalFormat fmt = new DecimalFormat("0.00");
 				//sets the total label value on the form
 				lblTotalLabel.setText(fmt.format(rainfall.getTotal()));
 				
 				//sets the average value on the form
 				rainfall = new Rainfall(strRainfall);
-				DecimalFormat fmt1 = new DecimalFormat("0.0");
+				DecimalFormat fmt1 = new DecimalFormat("0.00");
 				//sets the total label value on the form
 				lblAvg.setText(fmt1.format(rainfall.getAverage()));
 				
 				//sets the min value on the form
 				rainfall = new Rainfall(strRainfall);
-				DecimalFormat fmt2 = new DecimalFormat("0.0");
+				DecimalFormat fmt2 = new DecimalFormat("0.00");
 				//sets the total label value on the form
 				lblMin.setText(fmt2.format(rainfall.getLowest()));
 				
 				//sets the max value on the form
 				rainfall = new Rainfall(strRainfall);
-				DecimalFormat fmt3 = new DecimalFormat("0.0");
+				DecimalFormat fmt3 = new DecimalFormat("0.00");
 				//sets the total label value on the form
 				lblMax.setText(fmt3.format(rainfall.getHighest()));
 				
 				
 			}
 		});		
-		btnCalculate.setBounds(202, 281, 89, 23);
+		btnCalculate.setBounds(187, 269, 89, 23);
 		contentPane.add(btnCalculate);
 	}
 }
